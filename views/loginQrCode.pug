@@ -1,0 +1,18 @@
+extends base
+
+block content
+  main.main
+    .qr-form
+      h2.heading-secondary.ma-bt-lg Enter the code from your Google Authenthicator
+      form.form.form--verify
+        .form__group.ma-bt-md
+          label.form__label(for='verifyqr') Verify QR
+          input#verifyqr.form__input(
+            type='text',
+            placeholder='123456',
+            required,
+            minlength='6'
+          )
+        .form__group
+        button.btn.btn--green send
+        button#lostqr.btn.btn--green Recover Qr

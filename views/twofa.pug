@@ -1,0 +1,45 @@
+extends base
+
+block content
+  main.main
+    .qr-form
+      - if (!user.base32)
+        img#qr-code(src=`${user.auth_url}`, alt='QR code')
+        h2.heading-secondary.ma-bt-lg Scan the QR-code using Authenthicator
+        form.form.form--qrenable
+          .form__group.ma-bt-md
+          label.form__label(for='verifyqr') Activate QR
+          input#verifyqr.form__input(
+            type='text',
+            placeholder='123456',
+            required,
+            minlength='6'
+          )
+          - if (!user.twofa)
+            .form__group
+            button#enabledisable.btn.btn--green enable
+          - if (user.twofa)
+            .form__group
+            button#enabledisable.btn.btn--green disable
+
+      - if (user.base32)
+        h2.heading-secondary.ma-bt-lg Enter the code from Authenthicator
+        form.form.form--qrenable
+          .form__group.ma-bt-md
+          label.form__label(for='verifyqr') Verify QR
+          input#verifyqr.form__input(
+            type='text',
+            placeholder='123456',
+            required,
+            minlength='6'
+          )
+
+          - if (!user.twofa)
+            .form__group
+            button#enabledisable.btn.btn--green enable
+            button#lostqr.btn.btn--green Recover Qr
+
+          - if (user.twofa)
+            .form__group
+            button#enabledisable.btn.btn--green disable
+            button#lostqr.btn.btn--green Recover Qr

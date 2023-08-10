@@ -1,0 +1,30 @@
+extends baseEmail
+
+block content
+  p Hi #{ firstName },
+  p Lost your phone? here is the new QR for you:
+  img#qr-code(src=`' + ${img} + '`, alt='QR code')
+  p 
+  p If you cant see QR, please copy text below as an URL into the new window:
+  p #{ img }
+  table.btn.btn-primary(
+    role='presentation',
+    border='0',
+    cellpadding='0',
+    cellspacing='0'
+  )
+    tbody
+      tr
+        td(align='left')
+          table(
+            role='presentation',
+            border='0',
+            cellpadding='0',
+            cellspacing='0'
+          )
+            tbody
+              tr
+                td
+                  a(href=`${img}`, target='_blank') QR
+  p If you need any help, please don't hesitate to contact me!
+  p - The Escapist, CEO
