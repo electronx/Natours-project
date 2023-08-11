@@ -12,7 +12,7 @@ export const qrVerify = async (qrtoken) => {
       },
     });
 
-    console.log(res);
+    // console.log(res);
     if (res.data.status === 'success') {
       showAlert('success', 'Logged in Successfully!');
       window.setTimeout(() => {
