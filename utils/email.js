@@ -17,12 +17,13 @@ module.exports = class Email {
     if (process.env.NODE_ENV === 'production') {
       // using elasticemail to send real emails
 
-      return nodemailer.createTransport({
-        host: 'smtp.elasticemail.com',
+        return nodemailer.createTransport({
+        host: 'smtp-relay.sendinblue.com',
         port: 587,
+
         auth: {
-          user: process.env.ELASTICMAIL_USERNAME,
-          pass: process.env.ELASTICMAIL,
+          user: process.env.BREVO_USERNAME,
+          pass: process.env.BREVO_PASSWORD,
         },
       });
     }
