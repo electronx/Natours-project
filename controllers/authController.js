@@ -119,7 +119,7 @@ exports.activate = async (req, res, next) => {
     user.tempbase32 = secret.base32;
     qrcode.toDataURL(secret.otpauth_url, async (err, data) => {
       user.auth_url = data;
-      console.log(data);
+      // console.log(data);
       await user.save({ validateBeforeSave: false });
     });
   }
